@@ -2,6 +2,6 @@
 Theme name: Handel
 */
 
-html {
-  font-family: sans-serif;
-}
+@import './css/base.css';
+@import './css/header.css';
+@import './css/slide.css';

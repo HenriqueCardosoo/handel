@@ -16,14 +16,14 @@ $cart_count = WC()->cart->get_cart_contents_count();
 ?>
 
 
-<header class="header">
-  <a href="/"><img src="<?= $img_url; ?>/handel." alt=""></a>
+<header class="header container">
+   <a href="/"><img src="<?= $img_url; ?>/handel." alt="">Glamour925</a>  <!--colocar a logo aqui  -->
   <div class="busca">
 
     <form action="<?php bloginfo("url"); ?>/loja/" method="get">
       <input type="text" name="s" id="s" placeholder="Buscar" value="<?php the_search_query()?>">
       <input type="text" name="post_type" value="product" class="hidden">
-      <input type="submit" id="searchButton" value="Buscar" >
+      <input type="submit" id="searchbutton" value="Buscar" >
     </form>
   </div>
   <nav class="conta">
@@ -36,3 +36,11 @@ $cart_count = WC()->cart->get_cart_contents_count();
       </a>
   </nav>
 </header>
+
+<?php
+  wp_nav_menu([
+    'menu' => 'categorias',
+    'container' => 'nav',
+    'container_class' => 'menu-categorias',
+  ]);
+?>
