@@ -15,7 +15,7 @@ function format_products($products) {
   foreach($products as $product) {
     $products_final[] = [
       'name' => $product->get_name(),
-      'price' => $product->get_price_html(),
+      'preco' => $product->get_price_html(),
       'img' => wp_get_attachment_image_src($product->get_image_id(), "slide")[0],
       'link' => $product->get_permalink(),
     ];
@@ -25,12 +25,35 @@ function format_products($products) {
 
 $slide = format_products($products_slide);
 
-print_r($slide);
 ?>
 </pre>
 
 <?php if(have_posts()) { while (have_posts()) { the_post(); ?>
+
+  <ul class="vantagens">
+    <li>Frete Grátis</li>
+    <li>Troca Fácil</li>
+    <li>Até 12x</li>
+  </ul>
   
+  <section class="slide-wrapper">
+  <ul class="slide">
+    <?php foreach($slide as $product) { ?>
+      <li class="slide-item">
+        <img src="<?= $product['img']; ?>" alt="<?= $product['name']; ?>">
+        <div class="slide-info">
+          <span class="slide-preco"><?= $product['preco']; ?></span>
+          <h2 class="slide-nome"><?= $product['name']; ?></h2>
+          <a class="slide-link" href="<?= $product['link']; ?>">Ver Produto</a>
+        </div>
+      </li>
+    <?php } ?>
+  </ul>
+</section>
+
+
+
+
 <?php } } ?>
 
 <?php get_footer(); ?>
